@@ -1,0 +1,63 @@
+import Link from "next/link";
+import type { MouseEventHandler, ReactNode } from "react";
+import { cn } from "@/lib/utils";
+
+type ButtonVariant = "primary" | "outline" | "ghost";
+
+type CommonProps = {
+  className?: string;
+  variant?: ButtonVariant;
+  children: ReactNode;
+};
+
+type LinkButtonProps = CommonProps & {
+  href: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
+};
+
+type ActionButtonProps = CommonProps & {
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
+};
+
+function getButtonClasses(variant: ButtonVariant = "primary", className?: string) {
+  return cn(
+    "group/button relative inline-flex items-center justify-center overflow-hidden rounded-full px-5 py-3 text-sm font-semibold transition duration-300",
+    variant === "primary" &&
+      "bg-gradient-to-r from-primary to-accent text-white shadow-glow hover:scale-[1.02] hover:opacity-95",
+    variant === "outline" &&
+      "border border-border bg-surface/60 text-foreground hover:border-primary hover:text-primary",
+    variant === "ghost" && "text-foreground/80 hover:text-primary",
+    className
+  );
+}
+
+export function LinkButton({ href, className, variant = "primary", onClick, children }: LinkButtonProps) {
+  return (
+    <Link href={href} data-magnetic="true" onClick={onClick} className={getButtonClasses(variant, className)}>
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.28),transparent_58%)] opacity-0 transition duration-300 group-hover/button:opacity-100"
+      />
+      {children}
+    </Link>
+  );
+}
+
+export function ActionButton({
+  onClick,
+  type = "button",
+  className,
+  variant = "primary",
+  children
+}: ActionButtonProps) {
+  return (
+    <button type={type} data-magnetic="true" onClick={onClick} className={getButtonClasses(variant, className)}>
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.28),transparent_58%)] opacity-0 transition duration-300 group-hover/button:opacity-100"
+      />
+      {children}
+    </button>
+  );
+}

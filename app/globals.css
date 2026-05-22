@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 258 33% 10%;
+  --surface: 255 40% 98%;
+  --border: 255 18% 85%;
+  --primary: 265 91% 58%;
+  --secondary: 262 88% 45%;
+  --muted: 260 14% 45%;
+  --accent: 276 88% 56%;
+}
+
+.dark {
+  --background: 260 43% 6%;
+  --foreground: 0 0% 97%;
+  --surface: 258 32% 10%;
+  --border: 258 22% 20%;
+  --primary: 266 96% 66%;
+  --secondary: 283 92% 63%;
+  --muted: 257 15% 70%;
+  --accent: 292 88% 66%;
+}
+
+* {
+  @apply border-border;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-foreground font-body antialiased;
+  color-scheme: dark;
+  background-image: radial-gradient(circle at 12% 8%, rgba(120, 57, 255, 0.25), transparent 32%),
+    radial-gradient(circle at 80% 12%, rgba(155, 44, 255, 0.16), transparent 34%),
+    radial-gradient(circle at 20% 85%, rgba(109, 72, 255, 0.2), transparent 36%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.dark body {
+  background-image: radial-gradient(circle at 12% 8%, rgba(120, 57, 255, 0.3), transparent 32%),
+    radial-gradient(circle at 80% 12%, rgba(155, 44, 255, 0.24), transparent 34%),
+    radial-gradient(circle at 20% 85%, rgba(109, 72, 255, 0.26), transparent 36%);
+}
+
+::selection {
+  background: rgba(147, 51, 234, 0.3);
+  color: hsl(var(--foreground));
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(12, 9, 20, 0.45);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(168, 85, 247, 0.9), rgba(124, 58, 237, 0.65));
+  border: 2px solid rgba(12, 9, 20, 0.45);
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(168, 85, 247, 0.9);
+  outline-offset: 2px;
+}
+
+@layer components {
+  .container-shell {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .glass-card {
+    @apply border border-border/70 bg-surface/70 backdrop-blur-xl shadow-panel;
+  }
+
+  .section-space {
+    @apply py-20 md:py-24;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .noise-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239b87f5' fill-opacity='0.045'%3E%3Ccircle cx='6' cy='6' r='1'/%3E%3Ccircle cx='56' cy='44' r='1'/%3E%3Ccircle cx='92' cy='12' r='1'/%3E%3Ccircle cx='128' cy='82' r='1'/%3E%3Ccircle cx='22' cy='108' r='1'/%3E%3Ccircle cx='78' cy='124' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    opacity: 0.36;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
