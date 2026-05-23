@@ -57,3 +57,4 @@ Homepage sections are implemented and globally optimized for:
 - Set `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_META_PIXEL_ID`, and verification env vars.
 - Replace social/profile placeholder links with live brand handles.
 
+
