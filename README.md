@@ -1,4 +1,4 @@
-# Zao Marketing Website
+# Famex Marketing Website
 
 Premium, conversion-focused marketing agency website built with Next.js App Router, Tailwind CSS, and Framer Motion.
 
