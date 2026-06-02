@@ -24,7 +24,7 @@ export const siteConfig = {
 export const heroConfig = {
   headline: "Helping Brands Grow Faster Through Marketing & Technology",
   subheadline:
-    "Zao Marketing helps startups, creators, and businesses scale online with high-converting marketing strategies, premium web experiences, branding, and growth-focused digital systems.",
+    "Famex Marketing helps startups, creators, and businesses scale online with high-converting marketing strategies, premium web experiences, branding, and growth-focused digital systems.",
   supportingText:
     "From web development and SEO to paid ads and AI automation — we build digital experiences designed to turn attention into revenue.",
   trustPoints: ["Helping startups scale online", "Results-driven marketing"]
@@ -196,7 +196,7 @@ export const aboutExpertiseBadges = [
 ];
 
 export const portfolioSectionConfig = {
-  label: "Portfolio / Projects",
+  label: "Works",
   headline: "Real Work. Real Results.",
   supportingText:
     "From content creation and social media growth to websites, branding, and advertising — every project is built to drive measurable business outcomes."
@@ -437,13 +437,11 @@ export const footerConfig = {
 
 export const footerQuickLinks = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Packages", href: "/packages" },
-  { label: "Process", href: "/process" },
-  { label: "Contact", href: "/contact" },
-  { label: "Book a Call", href: "/book-a-call" }
+  { label: "Plans", href: "/plans" },
+  { label: "Works", href: "/works" },
+  { label: "About Us", href: "/about" },
+  { label: "Contact Us", href: "/contact" }
 ] as const;
 
 export const footerServiceLinks = [
@@ -465,12 +463,11 @@ export const footerSocialLinks = [
 
 export const navItems = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Packages", href: "/packages" },
-  { label: "Process", href: "/process" },
-  { label: "Contact", href: "/contact" }
+  { label: "Plans", href: "/plans" },
+  { label: "Works", href: "/works" },
+  { label: "About Us", href: "/about" },
+  { label: "Contact Us", href: "/contact" }
 ];
 
 export const serviceItems = [

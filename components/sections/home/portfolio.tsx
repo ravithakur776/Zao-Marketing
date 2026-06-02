@@ -440,7 +440,7 @@ export function PortfolioSection() {
       <div className="container-shell">
         <div className="relative">
           <SectionChapterIntro
-            label="PORTFOLIO"
+            label="WORKS"
             titleId="portfolio-section-title"
             title="Real Projects. Real Results. Real Growth."
             description="A collection of websites, reels, ad creatives, branding systems, and growth campaigns delivered for real businesses."

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { HomeHeroSection } from "@/components/sections/home/hero";
 import {
   AboutPreviewSection,
-  PortfolioPreviewSection,
-  ServicesPreviewSection
+  ServicesPreviewSection,
+  WorksPreviewSection
 } from "@/components/sections/home/previews";
 import { PricingPreviewSection } from "@/components/sections/home/pricing-preview";
 import { FinalCtaSection } from "@/components/sections/home/final-cta";
@@ -29,10 +29,10 @@ export default function HomePage() {
         ])}
       />
       <HomeHeroSection />
-      <AboutPreviewSection />
       <ServicesPreviewSection />
-      <PortfolioPreviewSection />
       <PricingPreviewSection />
+      <WorksPreviewSection />
+      <AboutPreviewSection />
       <FinalCtaSection />
       <FooterSection />
     </>

@@ -57,29 +57,23 @@ export function FinalCtaForm() {
         </label>
 
         <label className="sm:col-span-1">
-          <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">Budget (Optional)</span>
-          <select
-            name="budget"
-            defaultValue=""
+          <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">Project / Service Need</span>
+          <input
+            required
+            name="serviceNeed"
+            type="text"
+            placeholder="Reels, ads, website, social media..."
             className="w-full rounded-xl border border-border bg-background/70 px-4 py-3 text-sm outline-none ring-primary transition focus:ring-2"
-          >
-            <option value="" disabled>
-              Select range
-            </option>
-            <option value="1.5k-3k">$1.5k - $3k</option>
-            <option value="4k-8k">$4k - $8k</option>
-            <option value="9k-18k">$9k - $18k</option>
-            <option value="custom">Custom scope</option>
-          </select>
+          />
         </label>
 
         <label className="sm:col-span-2">
-          <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">Project Goal</span>
+          <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">Message</span>
           <textarea
             required
-            name="goal"
-            rows={4}
-            placeholder="What are you trying to scale right now?"
+            name="message"
+            rows={5}
+            placeholder="Share your current goal, timeline, and what you want Famex to help you improve."
             className="w-full rounded-xl border border-border bg-background/70 px-4 py-3 text-sm outline-none ring-primary transition focus:ring-2"
           />
         </label>

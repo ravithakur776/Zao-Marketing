@@ -8,6 +8,7 @@ import { navItems, siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { LinkButton } from "@/components/ui/button";
+import { BrandLogo } from "@/components/ui/brand-logo";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -52,8 +53,8 @@ export function SiteHeader() {
               : "border-border/70 bg-background/45"
           )}
         >
-          <Link href="/" data-magnetic="true" className="font-heading text-xl font-bold tracking-tight">
-            {siteConfig.name}
+          <Link href="/" data-magnetic="true" aria-label={`${siteConfig.name} home`}>
+            <BrandLogo markClassName="h-9 w-9" />
           </Link>
 
           <nav className="hidden items-center gap-2 lg:flex" aria-label="Main navigation">
@@ -85,7 +86,7 @@ export function SiteHeader() {
           <div className="hidden items-center gap-3 lg:flex">
             <ThemeToggle />
             <LinkButton href="/book-a-call" className="px-4 py-2 text-xs" variant="primary">
-              Get Strategy Call
+              Book a Call
             </LinkButton>
           </div>
 

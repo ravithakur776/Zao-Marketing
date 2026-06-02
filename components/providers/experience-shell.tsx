@@ -3,6 +3,8 @@
 import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { BrandLogo } from "@/components/ui/brand-logo";
+import { siteConfig } from "@/lib/site";
 
 type ExperienceShellProps = {
   children: React.ReactNode;
@@ -28,7 +30,7 @@ export function ExperienceShell({ children }: ExperienceShellProps) {
       return;
     }
 
-    const hasLoaded = sessionStorage.getItem("zao-loader-seen") === "1";
+    const hasLoaded = sessionStorage.getItem("famex-loader-seen") === "1";
     if (hasLoaded) {
       setLoading(false);
       return;
@@ -36,7 +38,7 @@ export function ExperienceShell({ children }: ExperienceShellProps) {
 
     const timeout = window.setTimeout(() => {
       setLoading(false);
-      sessionStorage.setItem("zao-loader-seen", "1");
+      sessionStorage.setItem("famex-loader-seen", "1");
     }, 1200);
 
     return () => window.clearTimeout(timeout);
@@ -62,8 +64,8 @@ export function ExperienceShell({ children }: ExperienceShellProps) {
                 aria-hidden="true"
                 className="pointer-events-none absolute -left-10 -top-10 h-24 w-24 rounded-full bg-primary/30 blur-2xl"
               />
-              <p className="font-heading text-2xl font-bold tracking-tight">Zao Marketing</p>
-              <p className="mt-1 text-xs uppercase tracking-[0.16em] text-primary">Turning Clicks Into Customers</p>
+              <BrandLogo className="justify-center" markClassName="h-12 w-12" />
+              <p className="mt-3 text-xs uppercase tracking-[0.16em] text-primary">{siteConfig.tagline}</p>
 
               <div className="mt-5 h-1.5 overflow-hidden rounded-full border border-border/70 bg-background/60">
                 <motion.span

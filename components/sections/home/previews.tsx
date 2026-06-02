@@ -3,10 +3,14 @@ import { FadeIn } from "@/components/ui/fade-in";
 import type { ReactNode } from "react";
 
 const previewServices = [
-  "Reels & Video Editing",
-  "Meta Ads & Google Ads",
-  "Web Development",
-  "Social Media Management"
+  "Video Editing",
+  "Graphic Design",
+  "Social Media Management",
+  "Monitoring & Reporting",
+  "Video Shoot",
+  "Meta Ads",
+  "Google Ads",
+  "Website Development"
 ] as const;
 
 const portfolioImages = [
@@ -54,7 +58,7 @@ export function AboutPreviewSection() {
   return (
     <SectionShell
       id="about-preview"
-      label="ABOUT"
+      label="ABOUT US"
       title="Founder-led growth execution for brands that need clarity."
       description="Famex Marketing bridges creative work and measurable business growth through strategy, design, marketing, and technical systems."
     >
@@ -112,13 +116,13 @@ export function ServicesPreviewSection() {
   );
 }
 
-export function PortfolioPreviewSection() {
+export function WorksPreviewSection() {
   return (
     <SectionShell
-      id="portfolio-preview"
-      label="PORTFOLIO"
+      id="works-preview"
+      label="WORKS"
       title="Real work across websites, reels, ads, and branding."
-      description="A quick look at portfolio assets from real projects. Explore the full gallery for case studies and category filters."
+      description="A quick look at real project assets from BNP Library, EcoFuture, Lions Fitness, campaigns, creatives, and logo work."
     >
       <div className="grid gap-4 md:grid-cols-4">
         {portfolioImages.map((src, index) => (
@@ -128,39 +132,13 @@ export function PortfolioPreviewSection() {
             className="group overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/30 p-3 shadow-[0_18px_58px_rgba(0,0,0,0.24)]"
           >
             <div className="aspect-[4/5] overflow-hidden rounded-[1.1rem] bg-black">
-              <img src={src} alt="Famex portfolio preview" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+              <img src={src} alt="Famex works preview" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
             </div>
           </FadeIn>
         ))}
       </div>
       <div className="mt-8">
-        <LinkButton href="/portfolio">View Full Portfolio</LinkButton>
-      </div>
-    </SectionShell>
-  );
-}
-
-export function PackagesPreviewSection() {
-  return (
-    <SectionShell
-      id="packages-preview"
-      label="PACKAGES"
-      title="Value-based packages for different growth stages."
-      description="No fixed template pricing. Choose the level of support that matches your stage, goals, and execution depth."
-    >
-      <div className="grid gap-5 lg:grid-cols-3">
-        {["Launch Package", "Growth Package", "Authority Package"].map((name, index) => (
-          <FadeIn key={name} delay={index * 0.06} className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">{index === 1 ? "Most Popular" : "Custom Scope"}</span>
-            <h3 className="mt-4 font-heading text-2xl font-semibold">{name}</h3>
-            <p className="mt-3 text-sm leading-6 text-muted">
-              Designed around outcomes, deliverables, and the kind of growth system your brand needs next.
-            </p>
-          </FadeIn>
-        ))}
-      </div>
-      <div className="mt-8">
-        <LinkButton href="/packages">Compare Packages</LinkButton>
+        <LinkButton href="/works">View Works</LinkButton>
       </div>
     </SectionShell>
   );

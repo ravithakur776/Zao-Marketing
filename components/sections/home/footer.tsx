@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { LinkButton } from "@/components/ui/button";
+import { BrandLogo } from "@/components/ui/brand-logo";
 import {
   footerConfig,
   footerQuickLinks,
@@ -78,7 +79,6 @@ function SocialIcon({ name }: { name: SocialIconName }) {
 
 export function FooterSection() {
   const [subscribed, setSubscribed] = useState(false);
-  const whatsappHref = `https://wa.me/${siteConfig.whatsappNumber.replace(/\D/g, "")}?text=Hi%20Zao%20Marketing,%20I%20want%20to%20discuss%20my%20project.`;
 
   return (
     <footer id="footer" className="relative isolate overflow-hidden pb-8" aria-labelledby="footer-title">
@@ -119,28 +119,19 @@ export function FooterSection() {
         >
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr_0.85fr_1.05fr]">
             <section>
-              <h2 id="footer-title" className="font-heading text-2xl font-bold tracking-tight sm:text-3xl">
-                {siteConfig.name}
+              <h2 id="footer-title">
+                <BrandLogo className="items-center" markClassName="h-11 w-11" />
               </h2>
               <p className="mt-2 text-xs uppercase tracking-[0.16em] text-primary">{siteConfig.tagline}</p>
               <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">{footerConfig.description}</p>
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <LinkButton href="/book-a-call" className="px-4 py-2.5 text-sm">
-                  Get Free Strategy Call
+                  Book a Call
                 </LinkButton>
                 <LinkButton href="/contact" variant="outline" className="px-4 py-2.5 text-sm">
                   Let&apos;s Work Together
                 </LinkButton>
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={() => trackEvent("whatsappClick", "footer_whatsapp")}
-                  className="inline-flex items-center justify-center rounded-full border border-primary/40 bg-primary/10 px-4 py-2.5 text-sm font-semibold text-primary transition hover:scale-[1.02] hover:bg-primary/15"
-                >
-                  WhatsApp
-                </a>
               </div>
             </section>
 
