@@ -56,3 +56,4 @@ Homepage sections are implemented and globally optimized for:
 - Connect forms to your backend/CRM webhook for real lead capture.
 - Set `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_META_PIXEL_ID`, and verification env vars.
 - Replace social/profile placeholder links with live brand handles.
+
