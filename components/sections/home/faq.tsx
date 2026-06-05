@@ -77,7 +77,7 @@ export function FaqSection() {
               className="mt-8 flex flex-wrap items-center gap-3"
             >
               <p className="text-sm text-muted">Still have questions? Book a call and we’ll map your growth path.</p>
-              <LinkButton href="/book-a-call">Book a Call</LinkButton>
+              <LinkButton href="/contact">Contact Us</LinkButton>
               <LinkButton href="/contact" variant="outline">
                 Let&apos;s Talk About Your Project
               </LinkButton>

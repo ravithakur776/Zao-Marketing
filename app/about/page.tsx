@@ -7,7 +7,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "About Famex Marketing | Founder-Led Growth Agency",
+  title: "About Us | Founder-Led Growth Agency",
   description:
     "Learn how Famex Marketing helps brands grow through strategy, content, websites, advertising, design, and execution systems.",
   path: "/about"
@@ -28,11 +28,11 @@ export default function AboutPage() {
       <StructuredData
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
-          { name: "About", path: "/about" }
+          { name: "About Us", path: "/about" }
         ])}
       />
       <PageHero
-        label="About"
+        label="About Us"
         title="Helping brands grow through strategy, systems, and execution."
         description="Famex Marketing was built to bridge the gap between strong creative work and measurable business growth."
       />
@@ -43,7 +43,7 @@ export default function AboutPage() {
         description="The work starts with clarity: what the brand sells, who it needs to reach, and which systems can turn attention into revenue."
       >
         <div className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
-          <FadeIn className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-7 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl md:p-9">
+          <FadeIn className="premium-panel rounded-[1.75rem] p-7 md:p-9">
             <h3 className="font-heading text-3xl font-semibold">Founder-led, strategy-first execution.</h3>
             <p className="mt-5 text-base leading-8 text-muted">{aboutFounderStory.intro}</p>
             <p className="mt-5 text-base leading-8 text-muted">
@@ -75,7 +75,7 @@ export default function AboutPage() {
       >
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {strengths.map((item) => (
-            <FadeIn key={item} className="rounded-2xl border border-white/10 bg-black/25 px-5 py-4 text-sm font-semibold text-foreground/90">
+            <FadeIn key={item} className="premium-panel-muted rounded-2xl px-5 py-4 text-sm font-semibold text-foreground/90">
               <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-primary align-middle" />
               {item}
             </FadeIn>

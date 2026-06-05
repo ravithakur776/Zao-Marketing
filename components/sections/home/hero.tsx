@@ -86,7 +86,7 @@ function AnalyticsDashboard() {
       className="relative mx-auto w-full max-w-3xl [perspective:1400px] lg:ml-auto lg:max-w-none"
       aria-label="Famex Marketing growth analytics dashboard"
     >
-      <div className="absolute -inset-x-5 top-12 h-72 rounded-full bg-primary/[0.08] blur-3xl" aria-hidden="true" />
+      <div className="absolute -inset-x-5 top-12 h-72 rounded-full bg-primary/[0.07] blur-3xl" aria-hidden="true" />
 
       <motion.div
         className="relative"
@@ -99,15 +99,15 @@ function AnalyticsDashboard() {
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           style={{ transformStyle: "preserve-3d" }}
         >
-          <div className="relative mx-auto rounded-[1.65rem] border border-white/15 bg-gradient-to-b from-white/16 via-white/8 to-white/[0.045] p-1.5 shadow-[0_34px_110px_rgba(0,0,0,0.48)] sm:p-2">
-            <div className="absolute left-1/2 top-2 z-10 h-2 w-20 -translate-x-1/2 rounded-b-xl bg-black/70" aria-hidden="true" />
-            <div className="relative overflow-hidden rounded-[1.2rem] border border-white/10 bg-[#08070d] p-2.5 sm:p-3">
+          <div className="premium-panel relative mx-auto rounded-[1.65rem] bg-gradient-to-b from-foreground/[0.08] via-surface/80 to-surface/55 p-1.5 sm:p-2">
+            <div className="absolute left-1/2 top-2 z-10 h-2 w-20 -translate-x-1/2 rounded-b-xl bg-foreground/55" aria-hidden="true" />
+            <div className="relative overflow-hidden rounded-[1.2rem] border border-border/80 bg-[hsl(var(--panel-muted))] p-2.5 sm:p-3">
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.16),transparent_24%,transparent_74%,rgba(255,255,255,0.06)),radial-gradient(circle_at_24%_18%,rgba(168,85,247,0.14),transparent_34%)]"
+                className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,hsl(var(--foreground)/0.09),transparent_24%,transparent_74%,hsl(var(--foreground)/0.035)),radial-gradient(circle_at_24%_18%,hsl(var(--primary)/0.12),transparent_34%)]"
               />
-              <div className="relative rounded-[1rem] border border-white/10 bg-white/[0.045] p-3 backdrop-blur-xl sm:p-4">
-                <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-3">
+              <div className="premium-panel relative rounded-[1rem] p-3 sm:p-4">
+                <div className="flex items-center justify-between gap-4 border-b border-border/80 pb-3">
                   <div>
                     <p className="text-[0.62rem] font-medium uppercase text-muted">Famex Growth OS</p>
                     <h2 className="mt-1 font-heading text-base font-semibold text-foreground sm:text-lg">Performance snapshot</h2>
@@ -118,7 +118,7 @@ function AnalyticsDashboard() {
                 </div>
 
                 <div className="mt-3 grid gap-3 lg:grid-cols-[1.35fr_0.95fr]">
-                  <div className="rounded-2xl border border-white/10 bg-black/25 p-3.5">
+                  <div className="premium-inset rounded-2xl p-3.5">
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div>
                         <p className="text-[0.68rem] font-medium uppercase text-muted">Revenue Growth</p>
@@ -126,7 +126,7 @@ function AnalyticsDashboard() {
                           <AnimatedCounter value={68} suffix="%" />
                         </p>
                       </div>
-                      <div className="rounded-full border border-white/10 bg-white/[0.055] px-3 py-1 text-[0.65rem] font-semibold text-primary">
+                      <div className="rounded-full border border-border/80 bg-surface/75 px-3 py-1 text-[0.65rem] font-semibold text-primary">
                         +24% MoM
                       </div>
                     </div>
@@ -146,7 +146,7 @@ function AnalyticsDashboard() {
                         </defs>
 
                         {[44, 88, 132, 176, 220].map((y) => (
-                          <line key={y} x1="8" x2="552" y1={y} y2={y} stroke="rgba(255,255,255,0.07)" strokeWidth="1" />
+                          <line key={y} x1="8" x2="552" y1={y} y2={y} stroke="hsl(var(--border))" strokeOpacity="0.65" strokeWidth="1" />
                         ))}
 
                         <motion.path
@@ -176,8 +176,8 @@ function AnalyticsDashboard() {
                               cx={x}
                               cy={points[index]}
                               r="4"
-                              fill="#f5d0fe"
-                              stroke="#08070d"
+                              fill="hsl(var(--primary))"
+                              stroke="hsl(var(--panel))"
                               strokeWidth="3"
                               initial={{ scale: 0, opacity: 0 }}
                               animate={{ scale: 1, opacity: 1 }}
@@ -193,7 +193,7 @@ function AnalyticsDashboard() {
                     {dashboardMetrics.map((metric, index) => (
                       <motion.article
                         key={metric.label}
-                        className="rounded-2xl border border-white/10 bg-white/[0.055] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
+                        className="premium-panel-muted rounded-2xl p-3"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.35 + index * 0.08, ease: "easeOut" }}
@@ -215,7 +215,7 @@ function AnalyticsDashboard() {
 
                 <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
                   {channelMetrics.map((metric) => (
-                    <div key={metric.label} className="flex items-center justify-between rounded-2xl border border-white/10 bg-black/25 px-3.5 py-3">
+                    <div key={metric.label} className="premium-inset flex items-center justify-between rounded-2xl px-3.5 py-3">
                       <span className="text-xs text-muted">{metric.label}</span>
                       <span className="font-heading text-base font-semibold text-primary">{metric.value}</span>
                     </div>
@@ -225,10 +225,10 @@ function AnalyticsDashboard() {
             </div>
           </div>
 
-          <div className="relative mx-auto h-4 w-[92%] rounded-b-[2rem] bg-gradient-to-b from-white/18 to-white/[0.055] shadow-[0_26px_55px_rgba(0,0,0,0.34)]">
-            <div className="absolute left-1/2 top-0 h-1.5 w-24 -translate-x-1/2 rounded-b-xl bg-black/30" aria-hidden="true" />
+          <div className="relative mx-auto h-4 w-[92%] rounded-b-[2rem] bg-gradient-to-b from-foreground/15 to-foreground/[0.04] shadow-[0_20px_42px_hsl(var(--shadow-color)/0.18)]">
+            <div className="absolute left-1/2 top-0 h-1.5 w-24 -translate-x-1/2 rounded-b-xl bg-foreground/25" aria-hidden="true" />
           </div>
-          <div className="mx-auto h-2 w-[78%] rounded-b-full bg-black/45 blur-[1px]" aria-hidden="true" />
+          <div className="mx-auto h-2 w-[78%] rounded-b-full bg-foreground/20 blur-[1px]" aria-hidden="true" />
         </motion.div>
       </motion.div>
     </motion.aside>
@@ -240,16 +240,13 @@ export function HomeHeroSection() {
     <section
       id="home-hero"
       aria-labelledby="home-hero-title"
-      className="relative isolate -mt-20 overflow-hidden bg-[#07040d] pb-20 pt-32 sm:pb-24 sm:pt-36 lg:min-h-[calc(100svh-1rem)] lg:pb-28"
+      className="relative isolate -mt-20 overflow-hidden bg-background pb-20 pt-32 sm:pb-24 sm:pt-36 lg:min-h-[calc(100svh-1rem)] lg:pb-28"
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_24%,rgba(124,58,237,0.18),transparent_34%),radial-gradient(circle_at_84%_20%,rgba(168,85,247,0.1),transparent_34%),linear-gradient(180deg,rgba(7,4,13,0.15),#07040d_92%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_24%,hsl(var(--primary)/0.15),transparent_34%),radial-gradient(circle_at_84%_20%,hsl(var(--accent)/0.08),transparent_34%),linear-gradient(180deg,hsl(var(--background)/0.15),hsl(var(--background))_92%)]"
       />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(255,255,255,0.7)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.7)_1px,transparent_1px)] [background-size:56px_56px]"
-      />
+      <div aria-hidden="true" className="chapter-grid pointer-events-none absolute inset-0" />
       <div aria-hidden="true" className="noise-overlay pointer-events-none absolute inset-0 opacity-25" />
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-background/80 to-transparent" />
 
@@ -263,7 +260,7 @@ export function HomeHeroSection() {
           <header className="max-w-xl">
             <motion.p
               variants={child}
-              className="inline-flex rounded-full border border-white/10 bg-white/[0.045] px-4 py-2 text-xs font-medium text-primary shadow-[0_0_28px_rgba(168,85,247,0.08)] backdrop-blur-xl"
+              className="inline-flex rounded-full border border-border/80 bg-surface/70 px-4 py-2 text-xs font-medium text-primary shadow-[0_8px_26px_hsl(var(--shadow-color)/0.07)] backdrop-blur-xl"
             >
               Strategy &bull; Design &bull; Growth
             </motion.p>
@@ -284,20 +281,20 @@ export function HomeHeroSection() {
 
             <motion.div variants={child} className="mt-10 flex flex-col gap-3.5 sm:flex-row">
               <LinkButton
-                href="/book-a-call"
+                href="/contact"
                 variant="primary"
-                onClick={() => trackEvent("callBooked", "hero_book_a_free_strategy_call")}
-                className="min-h-12 w-full px-6 shadow-[0_18px_58px_rgba(168,85,247,0.34)] hover:shadow-[0_22px_70px_rgba(168,85,247,0.42)] sm:w-auto"
+                onClick={() => trackEvent("lead", "hero_contact_us")}
+                className="min-h-12 w-full px-6 sm:w-auto"
               >
-                Book a Free Strategy Call
+                Contact Us
               </LinkButton>
               <LinkButton
-                href="/contact"
+                href="/services"
                 variant="outline"
-                onClick={() => trackEvent("lead", "hero_lets_work_together")}
-                className="min-h-12 w-full border-white/12 bg-white/[0.025] px-6 text-foreground/85 hover:border-white/25 hover:bg-white/[0.055] hover:text-foreground sm:w-auto"
+                onClick={() => trackEvent("lead", "hero_explore_services")}
+                className="min-h-12 w-full px-6 sm:w-auto"
               >
-                Let&apos;s Work Together
+                Explore Services
               </LinkButton>
             </motion.div>
 

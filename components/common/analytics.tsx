@@ -15,7 +15,7 @@ export function AnalyticsScripts() {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', '${gaId}', { page_path: window.location.pathname });
-              window.zaoTrack = {
+              window.famexTrack = {
                 lead: function(source){ gtag('event', 'generate_lead', { source: source || 'unknown' }); },
                 callBooked: function(source){ gtag('event', 'book_call', { source: source || 'unknown' }); },
                 whatsappClick: function(){ gtag('event', 'whatsapp_click'); }

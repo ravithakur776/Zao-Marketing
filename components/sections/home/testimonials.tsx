@@ -184,7 +184,7 @@ export function TestimonialsSection() {
               transition={{ duration: 0.55, delay: 0.28, ease: "easeOut" }}
               className="mt-8 flex flex-wrap gap-3"
             >
-              <LinkButton href="/book-a-call">Book a Call</LinkButton>
+              <LinkButton href="/contact">Contact Us</LinkButton>
               <LinkButton href="/contact" variant="outline">
                 Let&apos;s Grow Your Brand
               </LinkButton>

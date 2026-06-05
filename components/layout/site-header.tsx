@@ -47,10 +47,10 @@ export function SiteHeader() {
       <div className="container-shell">
         <div
           className={cn(
-            "flex h-16 items-center justify-between gap-4 rounded-2xl border px-4 shadow-panel backdrop-blur-2xl transition duration-300 sm:px-6",
+            "flex h-16 items-center justify-between gap-4 rounded-2xl border px-4 shadow-[0_12px_38px_hsl(var(--shadow-color)/0.12)] backdrop-blur-2xl transition duration-300 sm:px-6",
             scrolled
-              ? "border-primary/35 bg-background/55"
-              : "border-border/70 bg-background/45"
+              ? "border-primary/35 bg-background/88"
+              : "border-border/75 bg-background/72"
           )}
         >
           <Link href="/" data-magnetic="true" aria-label={`${siteConfig.name} home`}>
@@ -85,8 +85,8 @@ export function SiteHeader() {
 
           <div className="hidden items-center gap-3 lg:flex">
             <ThemeToggle />
-            <LinkButton href="/book-a-call" className="px-4 py-2 text-xs" variant="primary">
-              Book a Call
+            <LinkButton href="/contact" className="px-4 py-2 text-xs" variant="primary">
+              Contact Us
             </LinkButton>
           </div>
 
@@ -111,7 +111,10 @@ export function SiteHeader() {
         transition={{ duration: 0.25, ease: "easeOut" }}
         className="container-shell overflow-hidden lg:hidden"
       >
-        <div className="mt-2 grid gap-2 rounded-2xl border border-border/70 bg-surface/95 p-3 shadow-panel backdrop-blur-2xl">
+        <div className="premium-panel mt-2 grid gap-2 rounded-2xl p-3">
+          <Link href="/" onClick={() => setOpen(false)} aria-label={`${siteConfig.name} home`} className="mb-1 px-2 py-2">
+            <BrandLogo markClassName="h-8 w-8" />
+          </Link>
           {navItems.map((item) => (
             <Link
               key={item.href}

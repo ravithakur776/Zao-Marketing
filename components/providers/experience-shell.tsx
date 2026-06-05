@@ -58,7 +58,7 @@ export function ExperienceShell({ children }: ExperienceShellProps) {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="relative w-[280px] rounded-2xl border border-primary/35 bg-surface/70 p-6 text-center shadow-panel backdrop-blur-xl"
+              className="premium-panel relative w-[280px] rounded-2xl p-6 text-center"
             >
               <div
                 aria-hidden="true"

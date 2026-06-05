@@ -11,10 +11,10 @@ export const metadata: Metadata = buildPageMetadata({
   title: "Plans | Famex Marketing Service Plans",
   description:
     "Explore Famex Marketing service plans for content, production, ads, social media, website development, and full growth execution.",
-  path: "/packages"
+  path: "/plans"
 });
 
-export default function PackagesPage() {
+export default function PlansPage() {
   return (
     <>
       <StructuredData
@@ -29,7 +29,7 @@ export default function PackagesPage() {
         description="Choose the engagement model that fits your current needs, from consistent social presence to full growth execution. No fixed public prices, only plan fit, inclusions, and outcomes."
       >
         <div className="flex flex-wrap gap-3">
-          <LinkButton href="/contact">Find Your Package</LinkButton>
+          <LinkButton href="/contact">Find Your Plan</LinkButton>
           <LinkButton href="/works" variant="outline">See Proof of Work</LinkButton>
         </div>
       </PageHero>
@@ -44,8 +44,8 @@ export default function PackagesPage() {
             <FadeIn
               key={plan.name}
               delay={index * 0.06}
-              className={`rounded-[1.75rem] border p-6 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl ${
-                plan.featured ? "border-primary/45 bg-primary/[0.09] lg:-mt-4 lg:mb-4" : "border-white/10 bg-white/[0.04]"
+              className={`rounded-[1.75rem] border p-6 shadow-[0_24px_70px_hsl(var(--shadow-color)/0.12)] backdrop-blur-xl ${
+                plan.featured ? "border-primary/45 bg-gradient-to-br from-primary/14 via-surface/85 to-accent/10 lg:-mt-4 lg:mb-4" : "border-border/80 bg-[hsl(var(--panel)/0.82)]"
               }`}
             >
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
@@ -55,12 +55,12 @@ export default function PackagesPage() {
               <p className="mt-4 text-sm leading-6 text-muted">{plan.description}</p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {plan.groups.map((group) => (
-                  <span key={group} className="rounded-full border border-white/10 bg-black/25 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground/75">
+                  <span key={group} className="rounded-full border border-border/80 bg-background/65 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground/75">
                     {group}
                   </span>
                 ))}
               </div>
-              <p className="mt-5 rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm font-semibold text-foreground">
+              <p className="premium-inset mt-5 rounded-2xl px-4 py-3 text-sm font-semibold text-foreground">
                 {plan.highlight}
               </p>
               <ul className="mt-5 space-y-3">
@@ -80,14 +80,14 @@ export default function PackagesPage() {
       </PageSection>
 
       <PageSection label="Comparison" title="A simple way to compare support levels.">
-        <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.04] backdrop-blur-xl">
+        <div className="premium-panel overflow-hidden rounded-[1.75rem]">
           {[
             ["Plan", "Content & Growth", "Growth Plus", "Full Growth System"],
             ["Best for", "Consistent social presence", "Content + stronger ads", "Complete execution partner"],
             ["Core focus", "Content, social, Meta Ads", "Production, visits, Meta + Google", "Daily shoots, website, strategy"],
             ["Outcome", "Foundation for brand growth", "Balanced marketing execution", "Premium full growth support"]
           ].map((row) => (
-            <div key={row[0]} className="grid gap-0 border-b border-white/10 last:border-b-0 md:grid-cols-4">
+            <div key={row[0]} className="grid gap-0 border-b border-border/80 last:border-b-0 md:grid-cols-4">
               {row.map((cell, index) => (
                 <div key={cell} className={`p-4 text-sm ${index === 0 ? "font-semibold text-primary" : "text-foreground/86"}`}>
                   {cell}
@@ -98,15 +98,15 @@ export default function PackagesPage() {
         </div>
       </PageSection>
 
-      <PageSection label="How Scope Works" title="Every package is tailored after a strategy call.">
+      <PageSection label="How Scope Works" title="Every plan is tailored after an initial consultation.">
         <div className="grid gap-5 lg:grid-cols-3">
           <FeatureCard title="1. Diagnose" description="We understand your brand, offer, funnel, and growth bottlenecks." />
-          <FeatureCard title="2. Scope" description="We recommend the package and deliverables that match your next stage." />
+          <FeatureCard title="2. Scope" description="We recommend the plan and deliverables that match your next stage." />
           <FeatureCard title="3. Execute" description="We build the creative, technical, and marketing systems needed to move forward." />
         </div>
       </PageSection>
 
-      <PageCta title="Need help choosing the right package?" />
+      <PageCta title="Need help choosing the right plan?" />
     </>
   );
 }

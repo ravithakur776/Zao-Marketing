@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { SectionChapterIntro, SectionDivider } from "@/components/ui/section-heading";
 
-const categories = ["All", "Websites", "Reels", "Creatives", "Branding", "Logos"] as const;
+const categories = ["All", "Reels", "Websites", "Creatives", "Branding", "Logos", "Ads"] as const;
 type Category = (typeof categories)[number];
 
 const reveal = {
@@ -45,6 +45,8 @@ const creativeAssets = [
   { src: "/portfolio/social/creative-03.jpg", title: "Campaign Asset", type: "Graphic Design" },
   { src: "/portfolio/social/creative-04.jpg", title: "Social Creative", type: "Graphic Design" }
 ] as const;
+
+const adAssets = creativeAssets.slice(0, 5);
 
 const logoAssets = [
   { src: "/portfolio/logos/monogram-logo.jpg", title: "Monogram Logo" },
@@ -99,7 +101,7 @@ function FilterPills({ active, onChange }: { active: Category; onChange: (catego
           key={category}
           type="button"
           onClick={() => onChange(category)}
-          className="relative rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-muted transition duration-300 hover:border-primary/25 hover:bg-white/[0.055] hover:text-foreground"
+          className="relative rounded-full border border-border/80 bg-surface/55 px-4 py-2 text-sm font-medium text-muted transition duration-300 hover:border-primary/35 hover:bg-primary/[0.06] hover:text-foreground"
         >
           {active === category ? (
             <motion.span
@@ -118,9 +120,9 @@ function FilterPills({ active, onChange }: { active: Category; onChange: (catego
 function BrowserShowcase({ images = webAssets }: { images?: readonly { src: string; label: string }[] }) {
   return (
     <div className="relative">
-      <div className="rounded-[1.5rem] border border-white/15 bg-gradient-to-b from-white/14 to-white/[0.04] p-2 shadow-[0_26px_86px_rgba(0,0,0,0.42)]">
-        <div className="overflow-hidden rounded-[1.15rem] border border-white/10 bg-black">
-          <div className="flex items-center gap-1.5 border-b border-white/10 bg-white/[0.045] px-4 py-3">
+      <div className="premium-panel rounded-[1.5rem] bg-gradient-to-b from-foreground/[0.08] to-surface/70 p-2">
+        <div className="media-frame rounded-[1.15rem]">
+          <div className="flex items-center gap-1.5 border-b border-white/10 bg-neutral-900 px-4 py-3">
             <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
             <span className="h-2.5 w-2.5 rounded-full bg-yellow-300/70" />
             <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
@@ -147,7 +149,7 @@ function BrowserShowcase({ images = webAssets }: { images?: readonly { src: stri
           </div>
         </div>
       </div>
-      <div className="mx-auto h-3 w-[76%] rounded-b-full bg-white/[0.08]" />
+      <div className="mx-auto h-3 w-[76%] rounded-b-full bg-foreground/[0.08]" />
     </div>
   );
 }
@@ -158,7 +160,7 @@ function ReelStack() {
       {reelAssets.slice(0, 4).map((asset, index) => (
         <motion.div
           key={asset.src}
-          className="group/reel relative h-[17.5rem] w-[9.8rem] shrink-0 overflow-hidden rounded-[1.6rem] border border-white/14 bg-black shadow-[0_22px_70px_rgba(0,0,0,0.38)]"
+          className="media-frame group/reel relative h-[17.5rem] w-[9.8rem] shrink-0 rounded-[1.6rem]"
           initial={{ opacity: 0, y: 18, rotate: index % 2 ? 3 : -3 }}
           whileInView={{ opacity: 1, y: 0, rotate: index % 2 ? 1.5 : -1.5 }}
           whileHover={{ y: -8, rotate: 0, scale: 1.04 }}
@@ -203,8 +205,8 @@ function ProjectCard({ project, featured = false, index = 0 }: { project: (typeo
       whileHover={{ y: -5 }}
       className={
         featured
-          ? "grid gap-8 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-[0_30px_100px_rgba(0,0,0,0.36)] backdrop-blur-xl transition duration-300 hover:border-primary/25 sm:p-7 lg:grid-cols-[1.08fr_0.92fr] lg:p-8"
-          : "overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/[0.035] p-5 shadow-[0_18px_58px_rgba(0,0,0,0.24)] backdrop-blur-xl transition duration-300 hover:border-primary/24 hover:bg-white/[0.055] sm:p-6"
+          ? "premium-panel grid gap-8 overflow-hidden rounded-[2rem] p-5 transition duration-300 hover:border-primary/35 sm:p-7 lg:grid-cols-[1.08fr_0.92fr] lg:p-8"
+          : "premium-panel overflow-hidden rounded-[1.6rem] p-5 transition duration-300 hover:border-primary/35 sm:p-6"
       }
     >
       <div className={featured ? "relative min-h-[25rem]" : "mb-6"}>
@@ -219,7 +221,7 @@ function ProjectCard({ project, featured = false, index = 0 }: { project: (typeo
 
         <ul className="mt-6 grid gap-2 sm:grid-cols-2">
           {project.results.map((result) => (
-            <li key={result} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm font-semibold text-foreground/90">
+            <li key={result} className="premium-inset rounded-2xl px-4 py-3 text-sm font-semibold text-foreground/90">
               {result}
             </li>
           ))}
@@ -227,7 +229,7 @@ function ProjectCard({ project, featured = false, index = 0 }: { project: (typeo
 
         <ul className="mt-5 flex flex-wrap gap-2">
           {project.tools.map((tool) => (
-            <li key={tool} className="rounded-full border border-white/10 bg-white/[0.045] px-3 py-1.5 text-xs font-medium text-muted">
+            <li key={tool} className="rounded-full border border-border/80 bg-surface/65 px-3 py-1.5 text-xs font-medium text-muted">
               {tool}
             </li>
           ))}
@@ -237,7 +239,7 @@ function ProjectCard({ project, featured = false, index = 0 }: { project: (typeo
           <Link href="/contact" className="rounded-full bg-gradient-to-r from-primary to-accent px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_48px_rgba(168,85,247,0.22)] transition hover:-translate-y-0.5">
             {project.primary}
           </Link>
-          <Link href="/services" className="rounded-full border border-white/12 bg-white/[0.035] px-5 py-3 text-sm font-semibold text-foreground/85 transition hover:border-primary/30 hover:bg-white/[0.06] hover:text-foreground">
+          <Link href="/services" className="rounded-full border border-border/90 bg-surface/70 px-5 py-3 text-sm font-semibold text-foreground/85 transition hover:border-primary/40 hover:bg-primary/[0.06] hover:text-primary">
             {project.secondary}
           </Link>
         </div>
@@ -279,9 +281,9 @@ function ReelsShowcase() {
               whileInView="show"
               viewport={{ once: true, amount: 0.16 }}
               whileHover={{ y: -5, scale: 1.015 }}
-              className="group min-w-[15.5rem] rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-3 shadow-[0_16px_46px_rgba(0,0,0,0.24)] backdrop-blur-xl"
+              className="premium-panel group min-w-[15.5rem] rounded-[1.5rem] p-3"
             >
-              <div className="relative aspect-[9/14] overflow-hidden rounded-[1.2rem] border border-white/10 bg-black">
+              <div className="media-frame relative aspect-[9/14] rounded-[1.2rem]">
                 <img
                   src={asset.src}
                   alt={asset.title}
@@ -308,23 +310,23 @@ function ReelsShowcase() {
   );
 }
 
-function CreativeShowcase() {
+function CreativeShowcase({ assets = creativeAssets, adsOnly = false }: { assets?: readonly (typeof creativeAssets)[number][]; adsOnly?: boolean }) {
   return (
     <motion.div layout className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h3 className="font-heading text-3xl font-bold text-foreground">Creatives, Ads & Posters</h3>
+          <h3 className="font-heading text-3xl font-bold text-foreground">{adsOnly ? "Advertising Creatives" : "Creatives, Ads & Posters"}</h3>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
             Posters, social media designs, promotional ads, and campaign creatives from real portfolio work.
           </p>
         </div>
-        <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-semibold text-primary">
+        <span className="rounded-full border border-border/80 bg-surface/65 px-4 py-2 text-sm font-semibold text-primary">
           +30 More Designs
         </span>
       </div>
 
       <div className="columns-1 gap-4 sm:columns-2 lg:columns-4">
-        {creativeAssets.map((creative, index) => (
+        {assets.map((creative, index) => (
           <motion.article
             key={creative.src}
             custom={0.12 + index * 0.035}
@@ -333,9 +335,9 @@ function CreativeShowcase() {
             whileInView="show"
             viewport={{ once: true, amount: 0.14 }}
             whileHover={{ y: -4 }}
-            className="group mb-4 break-inside-avoid overflow-hidden rounded-[1.35rem] border border-white/10 bg-white/[0.035] p-3 shadow-[0_14px_42px_rgba(0,0,0,0.2)] transition duration-300 hover:border-primary/25"
+            className="premium-panel group mb-4 break-inside-avoid overflow-hidden rounded-[1.35rem] p-3 transition duration-300 hover:border-primary/35"
           >
-            <div className="relative rounded-[1.1rem] border border-white/10 bg-black/40 p-2">
+            <div className="media-frame relative rounded-[1.1rem] p-2">
               <img
                 src={creative.src}
                 alt={creative.title}
@@ -375,7 +377,7 @@ function LogoShowcase() {
             whileInView="show"
             viewport={{ once: true, amount: 0.18 }}
             whileHover={{ y: -6, scale: 1.015 }}
-            className="group rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-5 shadow-[0_16px_46px_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-300 hover:border-primary/25 hover:bg-white/[0.055]"
+            className="premium-panel group rounded-[1.5rem] p-5 transition duration-300 hover:border-primary/35"
           >
             <div className="grid aspect-square place-items-center overflow-hidden rounded-[1.25rem] border border-white/10 bg-white">
               <img
@@ -395,7 +397,7 @@ function LogoShowcase() {
   );
 }
 
-function PortfolioContent({ activeCategory }: { activeCategory: Category }) {
+function WorksContent({ activeCategory }: { activeCategory: Category }) {
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -415,39 +417,37 @@ function PortfolioContent({ activeCategory }: { activeCategory: Category }) {
         )}
         {(activeCategory === "All" || activeCategory === "Reels") && <ReelsShowcase />}
         {(activeCategory === "All" || activeCategory === "Creatives") && <CreativeShowcase />}
+        {activeCategory === "Ads" && <CreativeShowcase assets={adAssets} adsOnly />}
         {(activeCategory === "All" || activeCategory === "Branding" || activeCategory === "Logos") && <LogoShowcase />}
       </motion.div>
     </AnimatePresence>
   );
 }
 
-export function PortfolioSection() {
+export function WorksSection() {
   const [activeCategory, setActiveCategory] = useState<Category>("All");
 
   return (
-    <section id="portfolio" className="relative overflow-hidden bg-[#07040d] py-32 md:py-40" aria-labelledby="portfolio-section-title">
+    <section id="works" className="chapter-section" aria-labelledby="works-section-title">
       <SectionDivider />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.035),transparent_28%,rgba(124,58,237,0.05)_74%,transparent),radial-gradient(circle_at_18%_16%,rgba(124,58,237,0.075),transparent_30%),radial-gradient(circle_at_84%_68%,rgba(168,85,247,0.045),transparent_34%)]"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,hsl(var(--foreground)/0.025),transparent_28%,hsl(var(--primary)/0.045)_74%,transparent),radial-gradient(circle_at_18%_16%,hsl(var(--primary)/0.07),transparent_30%),radial-gradient(circle_at_84%_68%,hsl(var(--accent)/0.04),transparent_34%)]"
       />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.055] [background-image:linear-gradient(rgba(255,255,255,0.7)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.7)_1px,transparent_1px)] [background-size:54px_54px]"
-      />
+      <div aria-hidden="true" className="chapter-grid pointer-events-none absolute inset-0" />
       <div aria-hidden="true" className="noise-overlay pointer-events-none absolute inset-0 opacity-20" />
 
       <div className="container-shell">
         <div className="relative">
           <SectionChapterIntro
             label="WORKS"
-            titleId="portfolio-section-title"
+            titleId="works-section-title"
             title="Real Projects. Real Results. Real Growth."
             description="A collection of websites, reels, ad creatives, branding systems, and growth campaigns delivered for real businesses."
           />
 
           <FilterPills active={activeCategory} onChange={setActiveCategory} />
-          <PortfolioContent activeCategory={activeCategory} />
+          <WorksContent activeCategory={activeCategory} />
         </div>
       </div>
     </section>

@@ -15,10 +15,11 @@ export const siteConfig = {
     country: "India"
   },
   serviceRegion: "Local + Global",
-  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "+919999999999",
-  instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://instagram.com/famexmarketing",
+  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "+91 89795 61869",
+  instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://www.instagram.com/famex.marketing/",
   calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/famexmarketing/strategy-call",
-  email: "hello@famexmarketing.com"
+  email: "famexmarketing.in@gmail.com",
+  linkedInUrl: "https://www.linkedin.com/company/famex-marketings/"
 };
 
 export const heroConfig = {
@@ -216,7 +217,7 @@ export const portfolioProjects = [
   },
   {
     category: "Personal Brand",
-    title: "Authority-Led Creator Portfolio",
+    title: "Authority-Led Creator Works",
     description:
       "Designed a premium founder portfolio with sharper positioning, trust-led sections, and engagement paths for inbound collaborations.",
     techStack: ["Next.js", "Framer Motion", "SEO", "Email Capture"],
@@ -235,56 +236,6 @@ export const portfolioProjects = [
     caseStudyHref: "/contact",
     featured: false,
     metric: "-27% onboarding drop-off"
-  }
-] as const;
-
-export const processSectionConfig = {
-  label: "How We Work",
-  headline: "A clear growth system from first audit to scalable execution",
-  supportingText:
-    "Every engagement follows a structured flow so strategy, design, and performance stay aligned from day one."
-};
-
-export const processSteps = [
-  {
-    id: "01",
-    icon: "audit",
-    title: "Audit",
-    description: "We review positioning, funnel friction, channel performance, and technical blockers.",
-    badge: "Strategy First",
-    metric: "Clarity map in 72h"
-  },
-  {
-    id: "02",
-    icon: "planning",
-    title: "Planning",
-    description: "We design a focused roadmap with priorities, messaging direction, and KPI targets.",
-    badge: "Growth Focused",
-    metric: "Roadmap + KPI model"
-  },
-  {
-    id: "03",
-    icon: "design",
-    title: "Design",
-    description: "We craft premium user journeys and conversion-ready interfaces built for trust and action.",
-    badge: "Conversion Ready",
-    metric: "UX + brand alignment"
-  },
-  {
-    id: "04",
-    icon: "marketing",
-    title: "Marketing",
-    description: "We launch campaigns, content, and distribution loops that bring qualified traffic and leads.",
-    badge: "Performance Driven",
-    metric: "Acquisition engine live"
-  },
-  {
-    id: "05",
-    icon: "scale",
-    title: "Scale",
-    description: "We optimize continuously with insights, automations, and systems that compound over time.",
-    badge: "Scalable Systems",
-    metric: "Weekly optimization cycles"
   }
 ] as const;
 
@@ -430,9 +381,8 @@ export const finalCtaConfig = {
 
 export const footerConfig = {
   description:
-    "Famex Marketing helps brands scale online by combining marketing, development, branding, and growth systems designed to turn traffic into customers.",
-  newsletterCta: "Get growth insights, frameworks, and launch ideas in your inbox.",
-  closingLine: "Built with strategy, design, and growth in mind."
+    "Helping brands scale through content, marketing, design, and digital growth systems.",
+  closingLine: "Built with strategy, creativity & growth."
 };
 
 export const footerQuickLinks = [
@@ -445,20 +395,17 @@ export const footerQuickLinks = [
 ] as const;
 
 export const footerServiceLinks = [
-  { label: "Web Development", href: "/services" },
-  { label: "SEO", href: "/services" },
+  { label: "Video Editing", href: "/services" },
+  { label: "Social Media Management", href: "/services" },
   { label: "Meta Ads", href: "/services" },
-  { label: "UI/UX Design", href: "/services" },
+  { label: "Graphic Design", href: "/services" },
   { label: "Branding", href: "/services" },
-  { label: "Social Media Marketing", href: "/services" }
+  { label: "Website Development", href: "/services" }
 ] as const;
 
 export const footerSocialLinks = [
-  { label: "Instagram", href: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://instagram.com/famexmarketing", icon: "instagram" },
-  { label: "LinkedIn", href: "https://linkedin.com/company/famexmarketing", icon: "linkedin" },
-  { label: "GitHub", href: "https://github.com/famexmarketing", icon: "github" },
-  { label: "X", href: "https://x.com/famexmarketing", icon: "x" },
-  { label: "Facebook", href: "https://facebook.com/famexmarketing", icon: "facebook" }
+  { label: "Instagram", href: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://www.instagram.com/famex.marketing/", icon: "instagram" },
+  { label: "LinkedIn", href: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "https://www.linkedin.com/company/famex-marketings/", icon: "linkedin" }
 ] as const;
 
 export const navItems = [
@@ -507,6 +454,11 @@ export const baseMetadata: Metadata = {
   authors: [{ name: siteConfig.founderName }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg"
+  },
   robots: {
     index: true,
     follow: true,

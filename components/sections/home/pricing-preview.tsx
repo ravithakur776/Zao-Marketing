@@ -30,7 +30,7 @@ function FeatureCheck() {
 
 function ServiceCue({ label }: { label: string }) {
   return (
-    <span className="rounded-full border border-white/10 bg-black/25 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground/75">
+    <span className="rounded-full border border-border/80 bg-background/65 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-foreground/75">
       {label}
     </span>
   );
@@ -46,17 +46,17 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
       viewport={{ once: true, amount: 0.2 }}
       whileHover={{ y: -6, scale: plan.featured ? 1.015 : 1.01 }}
       className={cn(
-        "group relative h-full overflow-hidden rounded-[1.75rem] border p-5 shadow-[0_24px_80px_rgba(0,0,0,0.28)] transition duration-300 sm:p-6",
+        "group relative h-full overflow-hidden rounded-[1.75rem] border p-5 shadow-[0_24px_70px_hsl(var(--shadow-color)/0.12)] transition duration-300 sm:p-6",
         plan.featured
-          ? "border-primary/55 bg-gradient-to-br from-primary/18 via-white/[0.06] to-accent/12 lg:-mt-4 lg:mb-4"
-          : "border-white/10 bg-white/[0.04] hover:border-primary/30 hover:bg-white/[0.055]"
+          ? "border-primary/55 bg-gradient-to-br from-primary/16 via-surface/80 to-accent/10 lg:-mt-4 lg:mb-4"
+          : "border-border/80 bg-[hsl(var(--panel)/0.82)] hover:border-primary/35"
       )}
     >
       <div
         aria-hidden="true"
         className={cn(
           "pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent",
-          plan.featured ? "via-primary/70" : "via-white/18"
+          plan.featured ? "via-primary/70" : "via-border"
         )}
       />
 
@@ -71,7 +71,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
               "rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.1em]",
               plan.featured
                 ? "border-primary/45 bg-primary/15 text-primary"
-                : "border-white/10 bg-black/25 text-muted"
+                : "border-border/80 bg-background/65 text-muted"
             )}
           >
             {plan.badge}
@@ -87,7 +87,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
           ))}
         </div>
 
-        <p className="mt-5 rounded-2xl border border-white/10 bg-black/25 px-4 py-3 text-sm font-semibold leading-6 text-foreground/90">
+        <p className="premium-inset mt-5 rounded-2xl px-4 py-3 text-sm font-semibold leading-6 text-foreground/90">
           {plan.highlight}
         </p>
 
@@ -103,7 +103,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
 
         <div className="mt-7">
           <LinkButton
-            href={plan.featured ? "/contact" : "/book-a-call"}
+            href="/contact"
             onClick={() => trackEvent("lead", `service_plan_${plan.name.toLowerCase().replaceAll(" ", "_")}`)}
             className="w-full px-4 py-3 text-sm"
             variant={plan.featured ? "primary" : "outline"}
@@ -118,11 +118,11 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
 
 export function PricingPreviewSection() {
   return (
-    <section id="pricing-preview" className="relative overflow-hidden bg-[#07040d] py-32 md:py-40" aria-labelledby="pricing-preview-title">
+    <section id="pricing-preview" className="chapter-section" aria-labelledby="pricing-preview-title">
       <SectionDivider />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(124,58,237,0.12),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.025),transparent_28%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/0.11),transparent_34%),linear-gradient(180deg,hsl(var(--foreground)/0.018),transparent_28%)]"
       />
       <div aria-hidden="true" className="noise-overlay pointer-events-none absolute inset-0 opacity-16" />
       <div className="container-shell">
@@ -133,7 +133,7 @@ export function PricingPreviewSection() {
           description={pricingPreviewConfig.supportingText}
         />
 
-        <div className="relative mt-16 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.045] p-6 shadow-[0_30px_100px_rgba(0,0,0,0.34)] backdrop-blur-2xl sm:p-8 md:p-10 lg:p-12">
+        <div className="premium-panel relative mt-16 overflow-hidden rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/16"
@@ -155,7 +155,7 @@ export function PricingPreviewSection() {
               className="mt-8 flex flex-wrap items-center gap-3"
             >
               <LinkButton href="/contact">Discuss Your Plan</LinkButton>
-              <LinkButton href="/packages" variant="outline">
+              <LinkButton href="/plans" variant="outline">
                 Compare Full Service Plans
               </LinkButton>
             </motion.div>

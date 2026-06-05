@@ -5,6 +5,9 @@
  width="1254.000000pt" height="1254.000000pt" viewBox="0 0 1254.000000 1254.000000"
  preserveAspectRatio="xMidYMid meet">
 
+<defs>
+<mask id="famex-mark" maskUnits="userSpaceOnUse" x="0" y="0" width="1254" height="1254">
+<rect width="1254" height="1254" fill="#ffffff"/>
 <g transform="translate(0.000000,1254.000000) scale(0.100000,-0.100000)"
 fill="#000000" stroke="none">
 <path d="M0 6270 l0 -6270 6270 0 6270 0 0 6270 0 6270 -6270 0 -6270 0 0
@@ -21,4 +24,7 @@ fill="#000000" stroke="none">
 363 403 445 494 447 491 709 785 1358 1522 198 224 366 409 375 411 33 9 942
 7 942 -2z"/>
 </g>
+</mask>
+</defs>
+<rect width="1254" height="1254" fill="#000000" mask="url(#famex-mark)"/>
 </svg>

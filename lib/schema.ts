@@ -8,12 +8,10 @@ export function organizationSchema() {
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/logo.png`,
+    logo: `${siteConfig.url}/famex-logo.svg`,
     sameAs: [
       siteConfig.instagramUrl,
-      "https://linkedin.com/company/zaomarketing",
-      "https://x.com/zaomarketing",
-      "https://facebook.com/zaomarketing"
+      siteConfig.linkedInUrl
     ],
     contactPoint: [
       {
@@ -75,7 +73,7 @@ export function servicesSchema() {
     areaServed: ["India", "Global"],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Zao Marketing Services",
+      name: "Famex Marketing Services",
       itemListElement: homeServices.map((service) => ({
         "@type": "Offer",
         itemOffered: {

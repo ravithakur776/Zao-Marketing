@@ -43,6 +43,34 @@ const services = [
     deliverables: ["Content planning", "Creative direction", "Publishing system", "Growth reporting"]
   },
   {
+    title: "Monitoring, Analytics & Reporting",
+    outcome: "Clearer Decisions",
+    image: "/portfolio/social/marketing-post-2.jpg",
+    description: "Focused reporting that connects content, campaigns, leads, and next-step recommendations.",
+    deliverables: ["Performance reviews", "Lead tracking", "Channel insights", "Action reports"]
+  },
+  {
+    title: "Video Shoot",
+    outcome: "Stronger Content Library",
+    image: "/portfolio/reels/bnp-library-study-cabin.png",
+    description: "On-location content production planned around reels, ads, interviews, and brand storytelling.",
+    deliverables: ["Shoot planning", "Shot direction", "Short-form capture", "Content organization"]
+  },
+  {
+    title: "Photo + Video Production",
+    outcome: "Premium Brand Presence",
+    image: "/portfolio/reels/rotigo-restaurant-reel.png",
+    description: "Coordinated photo and video production for campaigns, social media, launches, and ongoing content.",
+    deliverables: ["Creative planning", "Photo production", "Video editing", "Campaign-ready exports"]
+  },
+  {
+    title: "Events & Visits",
+    outcome: "Timely Brand Coverage",
+    image: "/portfolio/reels/real-estate-reel.png",
+    description: "Content coverage for events, locations, launches, visits, and important brand moments.",
+    deliverables: ["Visit planning", "Event capture", "Fast-turn edits", "Social-ready assets"]
+  },
+  {
     title: "Branding",
     outcome: "Stronger Brand Identity",
     image: "/portfolio/logos/monogram-logo.jpg",
@@ -89,7 +117,7 @@ export default function ServicesPage() {
       >
         <div className="flex flex-wrap gap-3">
           <LinkButton href="/contact">Start a Project</LinkButton>
-          <LinkButton href="/portfolio" variant="outline">See Real Work</LinkButton>
+          <LinkButton href="/works" variant="outline">See Real Work</LinkButton>
         </div>
       </PageHero>
 
@@ -103,9 +131,9 @@ export default function ServicesPage() {
             <FadeIn
               key={service.title}
               delay={(index % 3) * 0.04}
-              className="grid gap-6 rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl md:grid-cols-[0.45fr_1fr] md:p-6"
+              className="premium-panel grid gap-6 rounded-[1.75rem] p-5 md:grid-cols-[0.45fr_1fr] md:p-6"
             >
-              <div className="group overflow-hidden rounded-[1.25rem] border border-white/10 bg-black">
+              <div className="media-frame group rounded-[1.25rem]">
                 <img
                   src={service.image}
                   alt={`${service.title} portfolio preview`}
@@ -125,7 +153,7 @@ export default function ServicesPage() {
                 <p className="mt-3 max-w-3xl text-sm leading-7 text-muted md:text-base">{service.description}</p>
                 <ul className="mt-5 grid gap-2 sm:grid-cols-2">
                   {service.deliverables.map((item) => (
-                    <li key={item} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-foreground/88">
+                    <li key={item} className="premium-inset rounded-2xl px-4 py-3 text-sm text-foreground/88">
                       {item}
                     </li>
                   ))}

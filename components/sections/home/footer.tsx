@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { LinkButton } from "@/components/ui/button";
 import { BrandLogo } from "@/components/ui/brand-logo";
 import {
   footerConfig,
@@ -12,19 +10,8 @@ import {
   footerSocialLinks,
   siteConfig
 } from "@/lib/site";
-import { trackEvent } from "@/lib/tracking";
 
 type SocialIconName = (typeof footerSocialLinks)[number]["icon"];
-
-const particles = [
-  { left: "7%", top: "16%", delay: 0.1 },
-  { left: "18%", top: "58%", delay: 0.4 },
-  { left: "28%", top: "80%", delay: 0.7 },
-  { left: "46%", top: "24%", delay: 1.1 },
-  { left: "63%", top: "66%", delay: 0.9 },
-  { left: "78%", top: "32%", delay: 1.3 },
-  { left: "91%", top: "74%", delay: 0.5 }
-] as const;
 
 function SocialIcon({ name }: { name: SocialIconName }) {
   const cls = "h-4 w-4";
@@ -62,14 +49,6 @@ function SocialIcon({ name }: { name: SocialIconName }) {
     );
   }
 
-  if (name === "x") {
-    return (
-      <svg viewBox="0 0 24 24" fill="none" className={cls} aria-hidden="true">
-        <path d="M5 5h3.1l7.8 14H12.8L5 5Zm10.8 0H19l-4 4.6L9.8 19H6.7l4.5-5.1L15.8 5Z" fill="currentColor" />
-      </svg>
-    );
-  }
-
   return (
     <svg viewBox="0 0 24 24" fill="none" className={cls} aria-hidden="true">
       <path d="M13.5 8H16V5h-2.5c-2.3 0-4 1.7-4 4v2H7v3h2.5v5h3v-5h2.7l.5-3h-3.2V9c0-.6.5-1 1-1Z" fill="currentColor" />
@@ -78,36 +57,16 @@ function SocialIcon({ name }: { name: SocialIconName }) {
 }
 
 export function FooterSection() {
-  const [subscribed, setSubscribed] = useState(false);
+  const phoneHref = `tel:${siteConfig.whatsappNumber.replace(/\s/g, "")}`;
+  const whatsappHref = `https://wa.me/${siteConfig.whatsappNumber.replace(/\D/g, "")}?text=Hi%20Famex%20Marketing,%20I%20want%20to%20discuss%20my%20growth%20project.`;
 
   return (
-    <footer id="footer" className="relative isolate overflow-hidden pb-8" aria-labelledby="footer-title">
+    <footer id="footer" className="relative isolate overflow-hidden border-t border-border/70 py-14 sm:py-20" aria-labelledby="footer-title">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_14%,rgba(124,58,237,0.3),transparent_34%),radial-gradient(circle_at_84%_18%,rgba(168,85,247,0.24),transparent_34%),radial-gradient(circle_at_48%_92%,rgba(91,33,182,0.22),transparent_38%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,hsl(var(--primary)/0.14),transparent_32%),linear-gradient(180deg,hsl(var(--primary)/0.05),transparent_42%)]"
       />
-
-      <motion.div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-35"
-        style={{
-          background:
-            "linear-gradient(120deg, rgba(124,58,237,0.16), rgba(0,0,0,0) 35%, rgba(168,85,247,0.18) 68%, rgba(0,0,0,0))"
-        }}
-        animate={{ x: ["-8%", "8%", "-8%"] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {particles.map((particle, index) => (
-        <motion.span
-          key={`${particle.left}-${particle.top}`}
-          aria-hidden="true"
-          className="pointer-events-none absolute h-1.5 w-1.5 rounded-full bg-primary/55"
-          style={{ left: particle.left, top: particle.top }}
-          animate={{ y: [0, -10, 0], opacity: [0.15, 0.95, 0.15] }}
-          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: particle.delay + index * 0.08 }}
-        />
-      ))}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
       <div className="container-shell relative">
         <motion.div
@@ -115,29 +74,35 @@ export function FooterSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.55, ease: "easeOut" }}
-          className="overflow-hidden rounded-3xl border border-border/75 bg-surface/60 p-6 shadow-panel backdrop-blur-2xl sm:p-8 md:p-10 lg:p-12"
+          className="premium-panel rounded-[2rem] p-6 sm:p-8 lg:p-10"
         >
-          <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr_0.85fr_1.05fr]">
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.25fr_0.75fr_0.9fr_1fr] lg:gap-8">
             <section>
               <h2 id="footer-title">
-                <BrandLogo className="items-center" markClassName="h-11 w-11" />
+                <BrandLogo className="items-center" markClassName="h-12 w-12" />
               </h2>
-              <p className="mt-2 text-xs uppercase tracking-[0.16em] text-primary">{siteConfig.tagline}</p>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">{footerConfig.description}</p>
+              <p className="mt-5 max-w-sm text-sm leading-6 text-muted">{footerConfig.description}</p>
 
-              <div className="mt-6 flex flex-wrap gap-3">
-                <LinkButton href="/book-a-call" className="px-4 py-2.5 text-sm">
-                  Book a Call
-                </LinkButton>
-                <LinkButton href="/contact" variant="outline" className="px-4 py-2.5 text-sm">
-                  Let&apos;s Work Together
-                </LinkButton>
-              </div>
+              <ul className="mt-7 flex flex-wrap gap-2" aria-label="Social links">
+                {footerSocialLinks.map((social) => (
+                  <li key={social.label}>
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={social.label}
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/75 bg-background/45 text-foreground/75 transition duration-300 hover:-translate-y-0.5 hover:border-primary/45 hover:bg-primary/10 hover:text-primary"
+                    >
+                      <SocialIcon name={social.icon} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </section>
 
             <nav aria-label="Footer navigation">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Navigation</p>
-              <ul className="mt-4 space-y-2 text-sm text-foreground/85">
+              <ul className="mt-5 space-y-3 text-sm text-foreground/80">
                 {footerQuickLinks.map((link) => (
                   <li key={link.label}>
                     <Link href={link.href} className="transition hover:text-primary">
@@ -150,7 +115,7 @@ export function FooterSection() {
 
             <section aria-label="Footer services">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Services</p>
-              <ul className="mt-4 space-y-2 text-sm text-foreground/85">
+              <ul className="mt-5 space-y-3 text-sm text-foreground/80">
                 {footerServiceLinks.map((service) => (
                   <li key={service.label}>
                     <Link href={service.href} className="transition hover:text-primary">
@@ -161,60 +126,33 @@ export function FooterSection() {
               </ul>
             </section>
 
-            <section>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Stay Updated</p>
-              <p className="mt-3 text-sm text-muted">{footerConfig.newsletterCta}</p>
-
-              <form
-                className="mt-4 space-y-2"
-                onSubmit={(event) => {
-                  event.preventDefault();
-                  setSubscribed(true);
-                  trackEvent("lead", "footer_newsletter");
-                }}
-              >
-                <label className="sr-only" htmlFor="footer-email">
-                  Email address
-                </label>
-                <input
-                  id="footer-email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  placeholder="Enter your email"
-                  className="w-full rounded-xl border border-border bg-background/70 px-4 py-3 text-sm outline-none ring-primary transition focus:ring-2"
-                />
-                <button
-                  type="submit"
-                  className="inline-flex w-full items-center justify-center rounded-full border border-primary/40 bg-primary/10 px-4 py-2.5 text-sm font-semibold text-primary transition hover:bg-primary/15"
+            <section className="rounded-3xl border border-primary/20 bg-primary/[0.06] p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Next Step</p>
+              <h3 className="mt-4 max-w-xs font-heading text-2xl font-bold leading-tight text-foreground">
+                Need help growing your brand?
+              </h3>
+              <div className="mt-6 grid gap-3 sm:max-w-xs">
+                <a
+                  href={phoneHref}
+                  className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-primary to-accent px-4 py-2.5 text-sm font-semibold text-white shadow-[0_14px_38px_hsl(var(--primary)/0.24)] transition duration-300 hover:scale-[1.02]"
                 >
-                  Subscribe
-                </button>
-              </form>
-              {subscribed ? <p className="mt-2 text-xs text-primary">Subscribed. You&apos;ll hear from us soon.</p> : null}
-
-              <ul className="mt-5 flex flex-wrap gap-2" aria-label="Social links">
-                {footerSocialLinks.map((social) => (
-                  <li key={social.label}>
-                    <a
-                      href={social.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={social.label}
-                      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/75 bg-background/55 text-foreground/80 transition hover:-translate-y-0.5 hover:border-primary/45 hover:text-primary"
-                    >
-                      <SocialIcon name={social.icon} />
-                    </a>
-                  </li>
-                ))}
-              </ul>
+                  Call Us
+                </a>
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex w-full items-center justify-center rounded-full border border-border bg-surface/60 px-4 py-2.5 text-sm font-semibold text-foreground transition duration-300 hover:border-primary hover:text-primary"
+                >
+                  WhatsApp Us
+                </a>
+              </div>
             </section>
           </div>
 
-          <div className="mt-10 border-t border-border/70 pt-5">
-            <p className="text-xs text-muted">
-              © {new Date().getFullYear()} {siteConfig.name}. {footerConfig.closingLine}
-            </p>
+          <div className="mt-10 flex flex-col gap-3 border-t border-border/70 pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+            <p>© 2026 {siteConfig.name}. All rights reserved.</p>
+            <p>{footerConfig.closingLine}</p>
           </div>
         </motion.div>
       </div>

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { StructuredData } from "@/components/common/structured-data";
 import { FinalCtaForm } from "@/components/forms/final-cta-form";
 import { FeatureCard, PageHero, PageSection } from "@/components/layout/agency-page";
-import { LinkButton } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/seo";
@@ -15,6 +14,8 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function ContactPage() {
+  const phoneHref = `tel:${siteConfig.whatsappNumber.replace(/\s/g, "")}`;
+  const emailHref = `mailto:${siteConfig.email}`;
   const whatsappHref = `https://wa.me/${siteConfig.whatsappNumber.replace(/\D/g, "")}?text=Hi%20Famex%20Marketing,%20I%20want%20to%20discuss%20my%20growth%20project.`;
 
   return (
@@ -22,16 +23,21 @@ export default function ContactPage() {
       <StructuredData
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
-          { name: "Contact", path: "/contact" }
+          { name: "Contact Us", path: "/contact" }
         ])}
       />
       <PageHero
-        label="Contact"
+        label="Contact Us"
         title="Ready to scale your brand?"
-        description="Tell us what you are trying to build, fix, or grow. You will get a founder-led response with clear next steps."
+        description="Share what you want to build, improve, or grow. Famex Marketing will respond with clear next steps for your brand."
       >
         <div className="flex flex-wrap gap-3">
-          <LinkButton href="/book-a-call">Book a Free Strategy Call</LinkButton>
+          <a
+            href={phoneHref}
+            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-accent px-5 py-3 text-sm font-semibold text-white shadow-[0_14px_38px_hsl(var(--primary)/0.24)] transition hover:scale-[1.02]"
+          >
+            Call Us
+          </a>
           <a
             href={whatsappHref}
             target="_blank"
@@ -46,26 +52,49 @@ export default function ContactPage() {
       <PageSection
         label="Inquiry"
         title="Share the growth goal."
-        description="Use the form for project inquiries, package requests, collaborations, and strategy calls."
+        description="Use the form for service inquiries, collaborations, and growth-focused projects."
       >
         <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr]">
           <FinalCtaForm />
           <div className="grid gap-5">
             <FeatureCard
-              eyebrow="Email"
-              title={siteConfig.email}
-              description="Send a brief directly if you already know the scope or want to share references."
-            />
+              eyebrow="Phone"
+              title={siteConfig.whatsappNumber}
+              description="Call directly when you want to discuss your brand, campaign, or website requirement."
+            >
+              <a href={phoneHref} className="text-sm font-semibold text-primary hover:underline">Call Us</a>
+            </FeatureCard>
             <FeatureCard
               eyebrow="WhatsApp"
               title={siteConfig.whatsappNumber}
-              description="Use WhatsApp for faster conversation, quick project context, and strategy call coordination."
+              description="Message on WhatsApp for fast project context and next-step coordination."
+            >
+              <a href={whatsappHref} target="_blank" rel="noreferrer" className="text-sm font-semibold text-primary hover:underline">
+                WhatsApp Us
+              </a>
+            </FeatureCard>
+            <FeatureCard
+              eyebrow="Email"
+              title={siteConfig.email}
+              description="Send a direct brief if you already know the scope or want to share references."
+            >
+              <a href={emailHref} className="text-sm font-semibold text-primary hover:underline">Email Us</a>
+            </FeatureCard>
+            <FeatureCard
+              eyebrow="Location"
+              title={`${siteConfig.location.city}, ${siteConfig.location.region}`}
+              description="Serving brands from Mathura, Uttar Pradesh with remote collaboration for growth projects."
             />
             <FeatureCard
-              eyebrow="Trust"
-              title="Founder-led response"
-              description="Your inquiry is reviewed with strategy in mind, not routed through a generic intake process."
-            />
+              eyebrow="Social"
+              title="Follow Famex Marketing"
+              description="Connect with Famex Marketing on Instagram and LinkedIn."
+            >
+              <div className="flex flex-wrap gap-3 text-sm font-semibold text-primary">
+                <a href={siteConfig.instagramUrl} target="_blank" rel="noreferrer" className="hover:underline">Instagram</a>
+                <a href={siteConfig.linkedInUrl} target="_blank" rel="noreferrer" className="hover:underline">LinkedIn</a>
+              </div>
+            </FeatureCard>
           </div>
         </div>
       </PageSection>

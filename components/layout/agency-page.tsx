@@ -14,15 +14,12 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden bg-[#07040d] pb-20 pt-28 md:pb-24 md:pt-32">
+    <section className="chapter-section pb-20 pt-28 md:pb-24 md:pt-32">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(124,58,237,0.16),transparent_34%),radial-gradient(circle_at_84%_20%,rgba(168,85,247,0.09),transparent_34%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,hsl(var(--primary)/0.13),transparent_34%),radial-gradient(circle_at_84%_20%,hsl(var(--accent)/0.07),transparent_34%)]"
       />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.06] [background-image:linear-gradient(rgba(255,255,255,0.7)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.7)_1px,transparent_1px)] [background-size:56px_56px]"
-      />
+      <div aria-hidden="true" className="chapter-grid pointer-events-none absolute inset-0" />
       <div aria-hidden="true" className="noise-overlay pointer-events-none absolute inset-0 opacity-20" />
       <div className="container-shell relative">
         <FadeIn>
@@ -52,11 +49,11 @@ export function PageSection({
   id?: string;
 }) {
   return (
-    <section id={id} className="relative overflow-hidden bg-[#07040d] py-24 md:py-28">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+    <section id={id} className="chapter-section">
+      <div aria-hidden="true" className="section-divider-line" />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(124,58,237,0.08),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.018),transparent_25%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,hsl(var(--primary)/0.08),transparent_30%),linear-gradient(180deg,hsl(var(--foreground)/0.018),transparent_25%)]"
       />
       <div className="container-shell relative">
         <FadeIn>
@@ -72,22 +69,23 @@ export function PageSection({
 
 export function PageCta({
   title = "Ready to scale your brand?",
-  description = "Book a free strategy call and we will map the clearest growth path for your business."
+  description = "Share your growth goal and we will map the clearest next step for your business."
 }: {
   title?: string;
   description?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-[#06030b] py-24 md:py-28">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(124,58,237,0.16),transparent_36%)]" />
+    <section className="chapter-section">
+      <div aria-hidden="true" className="section-divider-line" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/0.13),transparent_36%)]" />
       <div className="container-shell relative">
-        <FadeIn className="rounded-[2rem] border border-white/10 bg-white/[0.045] p-7 shadow-[0_30px_100px_rgba(0,0,0,0.34)] backdrop-blur-xl md:p-10">
+        <FadeIn className="premium-panel rounded-[2rem] p-7 md:p-10">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">Next Step</p>
           <h2 className="mt-4 max-w-3xl font-heading text-4xl font-bold leading-tight md:text-6xl">{title}</h2>
           <p className="mt-5 max-w-2xl text-base leading-7 text-muted">{description}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <LinkButton href="/contact">Let&apos;s Work Together</LinkButton>
-            <LinkButton href="/book-a-call" variant="outline">Book a Free Strategy Call</LinkButton>
+            <LinkButton href="/contact">Contact Us</LinkButton>
+            <LinkButton href="/plans" variant="outline">View Plans</LinkButton>
           </div>
         </FadeIn>
       </div>
@@ -107,7 +105,7 @@ export function FeatureCard({
   children?: ReactNode;
 }) {
   return (
-    <FadeIn className="h-full rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-6 shadow-[0_18px_58px_rgba(0,0,0,0.22)] backdrop-blur-xl">
+    <FadeIn className="premium-panel h-full rounded-[1.5rem] p-6">
       {eyebrow ? <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">{eyebrow}</p> : null}
       <h3 className="mt-3 font-heading text-2xl font-semibold">{title}</h3>
       <p className="mt-3 text-sm leading-6 text-muted">{description}</p>

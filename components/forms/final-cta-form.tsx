@@ -9,7 +9,7 @@ export function FinalCtaForm() {
 
   return (
     <form
-      className="rounded-2xl border border-border/75 bg-surface/75 p-5 shadow-panel backdrop-blur-xl sm:p-6"
+      className="premium-panel rounded-2xl p-5 sm:p-6"
       onSubmit={(event) => {
         event.preventDefault();
         setSubmitted(true);
@@ -17,7 +17,7 @@ export function FinalCtaForm() {
       }}
     >
       <h3 className="font-heading text-xl font-semibold">Tell us about your growth goal</h3>
-      <p className="mt-2 text-sm text-muted">Share a quick brief and we will map your best next move.</p>
+      <p className="mt-2 text-sm text-muted">Share a short brief and the Famex team will respond with clear next steps.</p>
 
       <div className="mt-5 grid gap-3 sm:grid-cols-2">
         <label className="sm:col-span-1">
@@ -28,42 +28,53 @@ export function FinalCtaForm() {
             type="text"
             autoComplete="name"
             placeholder="Your name"
-            className="w-full rounded-xl border border-border bg-background/70 px-4 py-3 text-sm outline-none ring-primary transition focus:ring-2"
+            className="w-full rounded-xl border border-border/90 bg-background/80 px-4 py-3 text-sm text-foreground outline-none ring-primary transition placeholder:text-muted/70 focus:border-primary/60 focus:ring-2"
           />
         </label>
 
         <label className="sm:col-span-1">
-          <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">Email</span>
+          <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">Phone</span>
           <input
             required
+            name="phone"
+            type="tel"
+            autoComplete="tel"
+            placeholder="+91 98765 43210"
+            className="w-full rounded-xl border border-border/90 bg-background/80 px-4 py-3 text-sm text-foreground outline-none ring-primary transition placeholder:text-muted/70 focus:border-primary/60 focus:ring-2"
+          />
+        </label>
+
+        <label className="sm:col-span-1">
+          <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">Service Needed</span>
+          <input
+            required
+            name="serviceNeeded"
+            type="text"
+            placeholder="Video editing, ads, website..."
+            className="w-full rounded-xl border border-border/90 bg-background/80 px-4 py-3 text-sm text-foreground outline-none ring-primary transition placeholder:text-muted/70 focus:border-primary/60 focus:ring-2"
+          />
+        </label>
+
+        <label className="sm:col-span-1">
+          <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">Business Name</span>
+          <input
+            required
+            name="businessName"
+            type="text"
+            autoComplete="organization"
+            placeholder="Brand or company name"
+            className="w-full rounded-xl border border-border/90 bg-background/80 px-4 py-3 text-sm text-foreground outline-none ring-primary transition placeholder:text-muted/70 focus:border-primary/60 focus:ring-2"
+          />
+        </label>
+
+        <label className="sm:col-span-2">
+          <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">Email <span className="normal-case tracking-normal text-muted/70">(optional)</span></span>
+          <input
             name="email"
             type="email"
             autoComplete="email"
             placeholder="you@company.com"
-            className="w-full rounded-xl border border-border bg-background/70 px-4 py-3 text-sm outline-none ring-primary transition focus:ring-2"
-          />
-        </label>
-
-        <label className="sm:col-span-1">
-          <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">Business / Brand</span>
-          <input
-            required
-            name="brand"
-            type="text"
-            autoComplete="organization"
-            placeholder="Brand or company name"
-            className="w-full rounded-xl border border-border bg-background/70 px-4 py-3 text-sm outline-none ring-primary transition focus:ring-2"
-          />
-        </label>
-
-        <label className="sm:col-span-1">
-          <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-muted">Project / Service Need</span>
-          <input
-            required
-            name="serviceNeed"
-            type="text"
-            placeholder="Reels, ads, website, social media..."
-            className="w-full rounded-xl border border-border bg-background/70 px-4 py-3 text-sm outline-none ring-primary transition focus:ring-2"
+            className="w-full rounded-xl border border-border/90 bg-background/80 px-4 py-3 text-sm text-foreground outline-none ring-primary transition placeholder:text-muted/70 focus:border-primary/60 focus:ring-2"
           />
         </label>
 
@@ -74,16 +85,16 @@ export function FinalCtaForm() {
             name="message"
             rows={5}
             placeholder="Share your current goal, timeline, and what you want Famex to help you improve."
-            className="w-full rounded-xl border border-border bg-background/70 px-4 py-3 text-sm outline-none ring-primary transition focus:ring-2"
+            className="w-full rounded-xl border border-border/90 bg-background/80 px-4 py-3 text-sm text-foreground outline-none ring-primary transition placeholder:text-muted/70 focus:border-primary/60 focus:ring-2"
           />
         </label>
       </div>
 
       <div className="mt-5 flex flex-wrap items-center gap-3">
         <ActionButton type="submit" className="px-5 py-3">
-          Let&apos;s Work Together
+          Send Inquiry
         </ActionButton>
-        <p className="text-xs text-muted">Demo mode active. Connect to CRM/webhook for production capture.</p>
+        <p className="text-xs text-muted">We will review your inquiry and respond with the best next step.</p>
       </div>
 
       {submitted ? <p className="mt-4 text-sm text-primary">Thanks. Your project brief has been captured.</p> : null}

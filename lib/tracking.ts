@@ -4,12 +4,12 @@ export function trackEvent(name: "lead" | "callBooked" | "whatsappClick", source
   }
 
   const tracker = (window as Window & {
-    zaoTrack?: {
+    famexTrack?: {
       lead?: (source?: string) => void;
       callBooked?: (source?: string) => void;
       whatsappClick?: () => void;
     };
-  }).zaoTrack;
+  }).famexTrack;
 
   if (!tracker) {
     return;

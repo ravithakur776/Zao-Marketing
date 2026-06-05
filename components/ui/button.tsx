@@ -24,9 +24,9 @@ function getButtonClasses(variant: ButtonVariant = "primary", className?: string
   return cn(
     "group/button relative inline-flex items-center justify-center overflow-hidden rounded-full px-5 py-3 text-sm font-semibold transition duration-300",
     variant === "primary" &&
-      "bg-gradient-to-r from-primary to-accent text-white shadow-glow hover:scale-[1.02] hover:opacity-95",
+      "bg-gradient-to-r from-primary to-accent text-white shadow-[0_14px_38px_hsl(var(--primary)/0.24)] hover:scale-[1.02] hover:shadow-[0_18px_46px_hsl(var(--primary)/0.3)]",
     variant === "outline" &&
-      "border border-border bg-surface/60 text-foreground hover:border-primary hover:text-primary",
+      "border border-border/90 bg-surface/75 text-foreground shadow-[0_8px_24px_hsl(var(--shadow-color)/0.07)] hover:border-primary/60 hover:bg-primary/[0.06] hover:text-primary",
     variant === "ghost" && "text-foreground/80 hover:text-primary",
     className
   );

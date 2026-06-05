@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { StructuredData } from "@/components/common/structured-data";
 import { PageCta, PageHero } from "@/components/layout/agency-page";
 import { LinkButton } from "@/components/ui/button";
-import { PortfolioSection } from "@/components/sections/home/portfolio";
+import { WorksSection } from "@/components/sections/home/portfolio";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -32,7 +32,7 @@ export default function WorksPage() {
           <LinkButton href="/services" variant="outline">Explore Services</LinkButton>
         </div>
       </PageHero>
-      <PortfolioSection />
+      <WorksSection />
       <PageCta title="Want your brand to become the next case study?" />
     </>
   );

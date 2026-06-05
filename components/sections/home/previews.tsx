@@ -34,11 +34,11 @@ function SectionShell({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="relative overflow-hidden bg-[#07040d] py-24 md:py-28">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/45 to-transparent" />
+    <section id={id} className="chapter-section">
+      <div aria-hidden="true" className="section-divider-line" />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(124,58,237,0.1),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.018),transparent_24%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,hsl(var(--primary)/0.09),transparent_30%),linear-gradient(180deg,hsl(var(--foreground)/0.018),transparent_24%)]"
       />
       <div className="container-shell relative">
         <FadeIn>
@@ -63,7 +63,7 @@ export function AboutPreviewSection() {
       description="Famex Marketing bridges creative work and measurable business growth through strategy, design, marketing, and technical systems."
     >
       <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-        <FadeIn className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl md:p-8">
+        <FadeIn className="premium-panel rounded-[1.75rem] p-6 md:p-8">
           <h3 className="font-heading text-2xl font-semibold">Built for strategy, systems, and execution.</h3>
           <p className="mt-4 max-w-3xl text-sm leading-7 text-muted md:text-base">
             Ravi Thakur built Famex for businesses that need more than scattered posts or isolated campaigns. The work connects content, websites, advertising, and automation into one focused growth system.
@@ -76,7 +76,7 @@ export function AboutPreviewSection() {
             ))}
           </div>
         </FadeIn>
-        <FadeIn delay={0.08} className="rounded-[1.75rem] border border-white/10 bg-black/25 p-6 backdrop-blur-xl md:p-8">
+        <FadeIn delay={0.08} className="premium-panel-muted rounded-[1.75rem] p-6 md:p-8">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary">Growth Philosophy</p>
           <p className="mt-4 font-heading text-3xl font-bold leading-tight">Content → Traffic → Leads → Revenue</p>
           <LinkButton href="/about" className="mt-7">Read the Founder Story</LinkButton>
@@ -99,7 +99,7 @@ export function ServicesPreviewSection() {
           <FadeIn
             key={service}
             delay={index * 0.05}
-            className="group rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-5 shadow-[0_18px_58px_rgba(0,0,0,0.22)] transition duration-300 hover:-translate-y-1 hover:border-primary/25 hover:bg-white/[0.055]"
+            className="premium-panel group rounded-[1.5rem] p-5 transition duration-300 hover:-translate-y-1 hover:border-primary/35"
           >
             <span className="font-mono text-sm font-semibold tracking-[0.18em] text-primary">0{index + 1}</span>
             <h3 className="mt-5 font-heading text-2xl font-semibold">{service}</h3>
@@ -129,9 +129,9 @@ export function WorksPreviewSection() {
           <FadeIn
             key={src}
             delay={index * 0.05}
-            className="group overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/30 p-3 shadow-[0_18px_58px_rgba(0,0,0,0.24)]"
+            className="premium-panel group overflow-hidden rounded-[1.5rem] p-3"
           >
-            <div className="aspect-[4/5] overflow-hidden rounded-[1.1rem] bg-black">
+            <div className="media-frame aspect-[4/5] rounded-[1.1rem]">
               <img src={src} alt="Famex works preview" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
             </div>
           </FadeIn>

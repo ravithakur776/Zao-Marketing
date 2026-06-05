@@ -3,14 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 258 33% 10%;
-  --surface: 255 40% 98%;
-  --border: 255 18% 85%;
+  --background: 260 45% 98%;
+  --foreground: 258 34% 9%;
+  --surface: 0 0% 100%;
+  --border: 258 22% 82%;
   --primary: 265 91% 58%;
   --secondary: 262 88% 45%;
-  --muted: 260 14% 45%;
+  --muted: 260 15% 35%;
   --accent: 276 88% 56%;
+  --panel: 0 0% 100%;
+  --panel-muted: 260 38% 96%;
+  --shadow-color: 265 42% 28%;
+  --grid-color: 262 30% 35%;
 }
 
 .dark {
@@ -22,6 +26,10 @@
   --secondary: 283 92% 63%;
   --muted: 257 15% 70%;
   --accent: 292 88% 66%;
+  --panel: 258 32% 10%;
+  --panel-muted: 260 34% 8%;
+  --shadow-color: 0 0% 0%;
+  --grid-color: 0 0% 100%;
 }
 
 * {
@@ -34,15 +42,16 @@ html {
 
 body {
   @apply bg-background text-foreground font-body antialiased;
-  color-scheme: dark;
-  background-image: radial-gradient(circle at 12% 8%, rgba(120, 57, 255, 0.25), transparent 32%),
-    radial-gradient(circle at 80% 12%, rgba(155, 44, 255, 0.16), transparent 34%),
-    radial-gradient(circle at 20% 85%, rgba(109, 72, 255, 0.2), transparent 36%);
+  color-scheme: light;
+  background-image: radial-gradient(circle at 12% 8%, rgba(120, 57, 255, 0.12), transparent 32%),
+    radial-gradient(circle at 80% 12%, rgba(155, 44, 255, 0.08), transparent 34%),
+    radial-gradient(circle at 20% 85%, rgba(109, 72, 255, 0.1), transparent 36%);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 .dark body {
+  color-scheme: dark;
   background-image: radial-gradient(circle at 12% 8%, rgba(120, 57, 255, 0.3), transparent 32%),
     radial-gradient(circle at 80% 12%, rgba(155, 44, 255, 0.24), transparent 34%),
     radial-gradient(circle at 20% 85%, rgba(109, 72, 255, 0.26), transparent 36%);
@@ -95,6 +104,40 @@ textarea:focus-visible {
 
   .section-space {
     @apply py-20 md:py-24;
+  }
+
+  .chapter-section {
+    @apply relative overflow-hidden bg-background py-24 md:py-32;
+  }
+
+  .chapter-grid {
+    background-image:
+      linear-gradient(hsl(var(--grid-color) / 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--grid-color) / 0.055) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .premium-panel {
+    @apply border border-border/80 bg-[hsl(var(--panel)/0.82)] backdrop-blur-xl;
+    box-shadow: 0 24px 70px hsl(var(--shadow-color) / 0.12);
+  }
+
+  .premium-panel-muted {
+    @apply border border-border/75 bg-[hsl(var(--panel-muted)/0.86)] backdrop-blur-xl;
+    box-shadow: 0 18px 52px hsl(var(--shadow-color) / 0.1);
+  }
+
+  .premium-inset {
+    @apply border border-border/70 bg-background/65;
+  }
+
+  .media-frame {
+    @apply overflow-hidden border border-border/70 bg-neutral-950;
+    box-shadow: 0 20px 60px hsl(var(--shadow-color) / 0.18);
+  }
+
+  .section-divider-line {
+    @apply pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/45 to-transparent;
   }
 }
 
